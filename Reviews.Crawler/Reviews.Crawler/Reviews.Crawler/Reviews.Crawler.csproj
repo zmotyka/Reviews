@@ -53,6 +53,10 @@
       <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FuzzyString, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FuzzyString1.0.1.1.0.1\lib\FuzzyString.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\Abot.1.5.1.53\lib\net40\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -87,8 +91,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrawlerManager.cs" />
+    <Compile Include="CrawlerResultProcessor.cs" />
+    <Compile Include="MongoManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScrapeResult.cs" />
+    <Compile Include="Scrapers\SuperdrugScraper.cs" />
+    <Compile Include="Scrapers\AmazonScraper.cs" />
+    <Compile Include="Scrapers\IScraper.cs" />
+    <Compile Include="Scrapers\BootsScraper.cs" />
+    <Compile Include="Scrapers\MakeupAlleyScraper.cs" />
+    <Compile Include="Util\Enumeration.cs" />
+    <Compile Include="Util\StringHelpers.cs" />
+    <Compile Include="Website.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
