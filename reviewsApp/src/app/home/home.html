@@ -20,6 +20,11 @@
                 <label>
                     {{ review.name }} - {{review.rating}}
                 </label>
+                <div *ngFor="let scrapeResult of review.scrapeResults">
+                    <p>{{scrapeResult.url}}</p>
+                    <p>{{scrapeResult.rating}}</p>
+                    <p>{{scrapeResult.website}}</p>
+                </div>
             </div>
         </div>
     </div>

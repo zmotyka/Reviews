@@ -1,0 +1,9 @@
+﻿
+# to deploy to heroku run
+git subtree push --prefix output heroku master
+
+# to identify issues and check the content of deployed directory
+heroku run ls -la
+
+# clear buildpacks
+heroku buildpacks:clear

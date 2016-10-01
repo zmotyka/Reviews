@@ -15,7 +15,6 @@
  */
 import {Component, ViewEncapsulation} from '@angular/core';
 import {RouteConfig, Router} from '@angular/router-deprecated';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {AppState} from './app.service';
 
