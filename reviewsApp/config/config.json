@@ -1,0 +1,9 @@
+{
+  "ENV" : "development",
+  "PORT" : 3000,
+  "MONGO_URI" : {
+    "DEVELOPMENT" : "mongodb://localhost:27017/reviewsDb",
+    "PRODUCTION": "mongodb://jzee-reviews-user:Centrum0@ds035046.mlab.com:35046/jzee-reviews-db"
+  }, 
+  "SESSION_SECRET" : "1B92179C4AAA1B1CD93B63513E62F"
+}
