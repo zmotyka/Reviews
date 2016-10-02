@@ -7,3 +7,9 @@ heroku run ls -la
 
 # clear buildpacks
 heroku buildpacks:clear
+
+heroku config:set NODE_ENV=staging
+
+
+https://devcenter.heroku.com/articles/nodejs-support
+http://www.tilcode.com/deploying-a-mean-stack-app-to-heroku/
