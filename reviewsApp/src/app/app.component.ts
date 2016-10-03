@@ -44,20 +44,7 @@ import {NgFor} from '@angular/common';
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
   styleUrls: [require('!style!css!sass!../sass/main.scss')],
-  template: `
-    <md-content>
-<md-toolbar color="primary">
-        <span>Reviews</span>
-        <span class="fill"></span>
-    </md-toolbar>
-      <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading">
-      </md-progress-bar>
-      <router-outlet></router-outlet>
-      <footer>
-        <span>Reviews 2016</span>
-      </footer>
-    </md-content>
-  `
+  template: require('./app.html')
 })
 @RouteConfig([
   { path: '/', name: 'Index', component: Home, useAsDefault: true }

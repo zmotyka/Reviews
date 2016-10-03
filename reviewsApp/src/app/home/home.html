@@ -1,31 +1,78 @@
-<div layout="column" class="md-inline-form">
-    <form class="margin-20">
-       <div class="row">
-           <div class="col-xs-12 col-md-6 col-md-offset-3">
-               <div class="input-group">
-                   <input type="text" class="search-query form-control input-lg" placeholder="Search" [(ngModel)]="searchData.searchTerm"/>
-                   <span class="input-group-btn">
-                       <button class="btn btn-default btn-lg" type="button" (click)="onSubmit()">
-                           <span class="glyphicon glyphicon-search"></span>
-                       </button>
-                   </span>
-               </div>
-           </div>
-       </div>
+<!-- Header -->
+<a name="about"></a>
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Reviews</h1>
+                    <h3>Buying new product? Check avarage rating in the net!</h3>
+                    <hr class="intro-divider">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="input-group">
+                        <input type="text" class="search-query form-control input-lg" placeholder="Search" [(ngModel)]="searchData.searchTerm" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-lg" type="button" (click)="onSubmit()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
 
-    </form>
-    <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            <div *ngFor="let review of reviews">
-                <label>
-                    {{ review.name }} - {{review.rating}}
-                </label>
-                <div *ngFor="let scrapeResult of review.scrapeResults">
-                    <p>{{scrapeResult.url}}</p>
-                    <p>{{scrapeResult.rating}}</p>
-                    <p>{{scrapeResult.website}}</p>
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+
+
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="media" *ngFor="let review of reviews">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="..." alt="...">
+                        </a>
+                    </div>
+
+                    <div class="media-body">
+                        <h4 class="media-heading">{{ review.name }}</h4>
+                        <p>Rating: {{review.rating}}</p>
+                        <div *ngFor="let scrapeResult of review.scrapeResults">
+                            <p>{{scrapeResult.url}}</p>
+                            <p>{{scrapeResult.rating}}</p>
+                            <p>{{scrapeResult.website}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- /.intro-header -->
+<!-- Page Content -->
+<a name="services"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">How does it work?</h2>
+                <p class="lead">Lorem ipsum...</p>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+
+

@@ -43,14 +43,34 @@ export class Home {
     onSubmit() {
         this.homeService.getAll(this.searchData.searchTerm)
             .subscribe((result) => {
-                console.log(result);
                 this.reviews = result;
+                //this.reviews = _.map(result, function (element) {
+                //    return _.extend({}, element, { avgRating: this.average(element.scrapeResults.map(x => x.rating)) });
+                //});
             });
     }
 
     ngOnInit() {
         console.log('hello `Home` component');
     }
+
+    //average() {
+    //    return function (array) {
+    //        if (!_.isArray(array) || array.length === 0) {
+    //            return;
+    //        }
+
+    //        var sum = 0;
+    //        _.forEach(array, function (value) {
+    //            if (!_.isNumber(value)) {
+    //                return;
+    //            }
+    //            sum += value;
+    //        });
+
+    //        return sum / array.length;
+    //    };
+    //}
 
 }
 
