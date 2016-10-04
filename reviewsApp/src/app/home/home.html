@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="intro-message">
                     <h1>Reviews</h1>
-                    <h3>Buying new product? Check avarage rating in the net!</h3>
+                    <h3>Buying a new product? Check its avarage rating here!</h3>
                     <hr class="intro-divider">
                 </div>
             </div>
@@ -16,48 +16,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <div class="input-group">
-                        <input type="text" class="search-query form-control input-lg" placeholder="Search" [(ngModel)]="searchData.searchTerm" />
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary btn-lg" type="button" (click)="onSubmit()">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                    </div>
+                    <r-search></r-search>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- /.container -->
 </div>
 
-
-<div class="content-section-a">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-                <div class="media" *ngFor="let review of reviews">
-                    <div class="media-left">
-                        <a href="#">
-                            <img class="media-object" src="..." alt="...">
-                        </a>
-                    </div>
-
-                    <div class="media-body">
-                        <h4 class="media-heading">{{ review.name }}</h4>
-                        <p>Rating: {{review.rating}}</p>
-                        <div *ngFor="let scrapeResult of review.scrapeResults">
-                            <p>{{scrapeResult.url}}</p>
-                            <p>{{scrapeResult.rating}}</p>
-                            <p>{{scrapeResult.website}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- /.intro-header -->
 <!-- Page Content -->

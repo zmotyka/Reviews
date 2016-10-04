@@ -21,6 +21,8 @@ import {AppState} from './app.service';
 import {RouterActive} from './shared/directives/router-active/router-active.directive';
 
 import {Home} from './home';
+import {Search} from './search';
+import {SearchResults} from './searchResults';
 
 // Import NgFor directive
 import {NgFor} from '@angular/common';
@@ -36,39 +38,36 @@ import {NgFor} from '@angular/common';
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  providers: [  ],
-  directives: [ NgFor,
-                RouterActive],
-  encapsulation: ViewEncapsulation.None,
-  pipes: [],
-  // Load our main `Sass` file into our `app` `component`
-  styleUrls: [require('!style!css!sass!../sass/main.scss')],
-  template: require('./app.html')
+    selector: 'app',
+    providers: [],
+    directives: [NgFor,
+        RouterActive],
+    encapsulation: ViewEncapsulation.None,
+    pipes: [],
+    // Load our main `Sass` file into our `app` `component`
+    styleUrls: [require('!style!css!sass!../sass/main.scss')],
+    template: require('./app.html')
 })
 @RouteConfig([
-  { path: '/', name: 'Index', component: Home, useAsDefault: true }
-  //{ path: '/home',  name: 'Home',  component: Home },
-  //{ path: '/todo', component: Todo, name: 'Todo' },
-  //{ path: '/redux', component: Recipes, name: 'Recipes' },
-  // Async load a component using Webpack's require with
-  // es6-promise-loader and webpack `require`
-  //{ path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
+    { path: '/', name: 'Index', component: Home, useAsDefault: true },
+    { path: '/search-results', name: 'SearchResults', component: SearchResults }
+    //{ path: '/todo', component: Todo, name: 'Todo' },
+    //{ path: '/redux', component: Recipes, name: 'Recipes' },
+    // Async load a component using Webpack's require with
+    // es6-promise-loader and webpack `require`
+    //{ path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
 ])
 export class App {
-  angularLogo = 'assets/img/angular-logo.png';
-  name = 'Reviews';
-  url = '';
+    angularLogo = 'assets/img/angular-logo.png';
+    name = 'Reviews';
+    url = '';
 
-  // Pass in our application `state`
-  // Alternative to using `redux`
-  constructor(public appState: AppState) {}
+    constructor(public appState: AppState) { }
 
-  // Fire off upon initialization
-  ngOnInit() {
-
-    console.log('Initial App State', this.appState.state);
-  }
+    // Fire off upon initialization
+    ngOnInit() {
+        console.log('Initial App State', this.appState.state);
+    }
 }
 
 /*

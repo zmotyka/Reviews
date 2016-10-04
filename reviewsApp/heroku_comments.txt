@@ -1,6 +1,6 @@
 ﻿
 # to deploy to heroku run
-git subtree push --prefix output heroku master
+git subtree push --prefix reviewsApp heroku master
 
 # to identify issues and check the content of deployed directory
 heroku run ls -la

@@ -1,0 +1,79 @@
+<div class="intro-header small-header">
+    <div class="search-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <r-search></r-search>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="search-results-stats">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h4>{{products.length}} products found related to "{{searchTerm}}"</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="btn-group pull-right margin-top-15">
+    <a href="#" id="list" class="btn btn-default btn-sm" (click)="listClick($event)">
+        <span class="glyphicon glyphicon-th-list"></span>List
+    </a>
+    <a href="#" id="grid" class="btn btn-default btn-sm" (click)="gridClick($event)">
+        <span class="glyphicon glyphicon-th"></span>Grid
+    </a>
+</div>
+<div class="content-section-a">
+    <div class="container">
+
+        <div id="products" class="row list-group">
+            <div class="item col-xs-4" *ngFor="let product of products" [class.list-group-item]="isList" [class.grid-group-item]="!isList">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">
+                            {{ product.name }}
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    Rating: {{product.avgRating}} <span class="text-muted">({{product.scrapeResults.length}})</span>
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-primary" href="#" (click)="seeDetails($event)">See details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!--<div class="media" *ngFor="let product of products">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="..." alt="...">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <h4 class="media-heading">{{ product.name }}</h4>
+                    <p>Rating: {{product.avgRating}}</p>
+                    <div *ngFor="let scrapeResult of product.scrapeResults">
+                        <p>{{scrapeResult.url}}</p>
+                        <p>{{scrapeResult.rating}}</p>
+                        <p>{{scrapeResult.website}}</p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>

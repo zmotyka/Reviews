@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, URLSearchParams} from '@angular/http';
 
 @Injectable()
-export class HomeService {
+export class SearchResultsService {
   constructor(public http:Http) {
 
   }
