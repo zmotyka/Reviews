@@ -40,36 +40,37 @@ export class SearchResults {
                 this.products = result.map(x => {
                     let sum = _.sumBy(x.scrapeResults, function (o) { return o.rating; });
                     x.avgRating = sum / x.scrapeResults.length;
+                    x.avgRatingFloor = Math.floor(x.avgRating);
+
+                    x.scrapeResults = x.scrapeResults.map(y => {
+                        y.websiteName = this.getWebsiteName(y.website);
+                        return y;
+                    });
                     return x;
                 });
             });
     }
 
-    listClick(event) {
-        this.isList = true;
-        event.preventDefault();
-    }
-
-    gridClick(event) {
-        this.isList = false;
-        event.preventDefault();
-    }
-
-    seeDetails(event) {
-        event.preventDefault();
-    }
-
     ngOnInit() {
         console.log('hello `Search Results` component');
+    }
+
+    private getWebsiteName(website: number) {
+        switch (website) {
+            case 1: return 'MakeupAlley';
+            case 2: return 'Boots';
+            case 3: return 'Amazon';
+            case 4: return 'Superdrug';
+        }
     }
 }
 
 export class Product {
-    constructor(public name: string, public scrapeResults: ProductScrape[], public avgRating: number) {
+    constructor(public name: string, public scrapeResults: ProductScrape[], public avgRating: number, public avgRatingFloor: number) {
     }
 }
 
 export class ProductScrape {
-    constructor(public rating: number, public src: string, public url: string) {
+    constructor(public rating: number, public website: number, public url: string, public websiteName: string) {
     }
 }

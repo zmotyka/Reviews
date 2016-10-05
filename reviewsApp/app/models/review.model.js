@@ -10,7 +10,7 @@ import textSearch from 'mongoose-text-search';
 // Create a `schema` for the `Todo` object
 let scrapeResultsSchema = new mongoose.Schema({ 
     rating: { type: Number},
-    src: { type: String},
+    website: { type: Number},
     url: { type : String } 
 });
 let reviewSchema = new mongoose.Schema({
