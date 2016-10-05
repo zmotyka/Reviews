@@ -1,19 +1,8 @@
-<div class="intro-header small-header">
-    <div class="search-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <r-search></r-search>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="search-results-stats">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
+                <r-search></r-search>
                 <h4>{{products.length}} products found related to "{{searchTerm}}"</h4>
             </div>
         </div>
@@ -21,11 +10,13 @@
 </div>
 <div class="content-section-a">
     <div class="container">
-
         <div id="products" class="row list-group">
             <div class="item col-sm-4" *ngFor="let product of products; let i = index">
                 <div class="thumbnail">
-                    <div class="rating rate-{{product.avgRatingFloor}}">{{product.avgRating}}</div>
+                    <div class="rating rate-{{product.avgRatingFloor}}">
+                        {{product.avgRating}}
+                        <span class="small">out of 5</span>
+                    </div>
                     <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
                     <div class="caption">
                         <h4 class="group inner list-group-item-heading">

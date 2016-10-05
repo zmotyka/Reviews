@@ -15,6 +15,10 @@ html {
     height: 100%;
 }
 
+body{
+    padding-top: 50px;
+}
+
 body,
 h1,
 h2,
@@ -228,21 +232,27 @@ p.copyright {
     position: relative;
 
     .rating {
-        position: absolute;
-        right: 0;
-        top: 0;
-        padding: 20px;
-        background-color: green;
-        color: white;
-        font-size: 2em;
-
         $num-colors: 5;
-        $base-color: #C68F5B;
+        $base-color: rgba(229, 110, 0, 0.6);
 
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 10px;
+        background-color: $base-color;
+        color: white;
+        font-size: 1.5em;
+        text-align: center;
+        border-radius: 1px;
         @for $i from 0 to $num-colors {
             &.rate-#{$i+1} {
                 background: adjust-hue($base-color, 20deg * $i);
             }
+        }
+
+        span{
+            display: block;
+            font-size: 0.4em;
         }
     }
 
@@ -263,35 +273,3 @@ p.copyright {
     }
 }
 
-/*.item.list-group-item {
-    float: none;
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 10px;
-
-    .list-group-image {
-        margin-right: 10px;
-    }
-    .thumbnail {
-        margin-bottom: 0px;
-    }
-    .caption {
-        padding: 9px 9px 0px 9px;
-    }
-    &:before, &:after {
-        display: table;
-        content: " ";
-    }
-    &:after{
-        clear: both;
-    }
-
-    img {
-        float: left;
-    }
-
-}
-
-.list-group-item-text {
-    margin: 0 0 11px;
-}*/
