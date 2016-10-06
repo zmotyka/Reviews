@@ -15,6 +15,8 @@ namespace Reviews.Crawler.Scrapers
 
             if (productDetailsContainer != null)
             {
+                result = new ScrapeResult { AbsolutePath = page.Uri.AbsoluteUri, WebsiteSource = WebsiteSource.Boots };
+
                 var productNameContainer = productDetailsContainer.Descendants("h1").FirstOrDefault();
                 var ratingContainer = productDetailsContainer.Descendants("span").FirstOrDefault(x => x.Attributes["itemprop"] != null && x.Attributes["itemprop"].Value == "ratingValue");
                 if (productNameContainer != null && ratingContainer != null)
@@ -22,13 +24,8 @@ namespace Reviews.Crawler.Scrapers
                     RemoveComments(productNameContainer);
                     RemoveComments(ratingContainer);
 
-                    result = new ScrapeResult
-                    {
-                        ProductName = productNameContainer.InnerText.TrimString(),
-                        Rating = ratingContainer.InnerText.TrimString(),
-                        AbsolutePath = page.Uri.AbsolutePath,
-                        WebsiteSource = WebsiteSource.Boots
-                    };
+                    result.ProductName = HtmlEntity.DeEntitize(productNameContainer.InnerText.TrimString());
+                    result.Rating = HtmlEntity.DeEntitize(ratingContainer.InnerText.TrimString());
                 }
             }
             return result;

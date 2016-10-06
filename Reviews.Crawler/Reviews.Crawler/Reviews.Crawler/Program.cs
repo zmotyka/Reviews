@@ -6,10 +6,10 @@ namespace Reviews.Crawler
     {
         static void Main()
         {
-            //Crawl(WebsiteSource.Boots);
+            Crawl(WebsiteSource.MakeupAlley);
 
-            var task = ProcessCrawlResult();
-            task.Wait();
+            //var task = ProcessCrawlResult();
+            //task.Wait();
         }
 
         private static void Crawl(WebsiteSource websiteSource)

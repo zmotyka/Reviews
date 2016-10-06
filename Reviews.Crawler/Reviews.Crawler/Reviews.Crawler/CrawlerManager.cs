@@ -61,7 +61,14 @@ namespace Reviews.Crawler
             var scrapeResult = _websiteSource.Scraper.GetScrapeResult(crawledPage);
             if (scrapeResult != null)
             {
-                await _mongoManager.AddScrapeResult(scrapeResult);
+                if (scrapeResult.IsValid())
+                {
+                    await _mongoManager.AddScrapeResult(scrapeResult);
+                }
+                else
+                {
+                    await _mongoManager.AddErroredScrapeResult(scrapeResult);
+                }
             }
         }
 

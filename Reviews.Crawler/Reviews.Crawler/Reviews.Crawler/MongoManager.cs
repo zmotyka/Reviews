@@ -26,16 +26,25 @@ namespace Reviews.Crawler
 
         public async Task AddScrapeResult(ScrapeResult scrapeResult)
         {
-            var document = new BsonDocument
+            var collection = _database.GetCollection<BsonDocument>("scrapeResult");
+            await collection.InsertOneAsync(GetScrapeResultDoc(scrapeResult));
+        }
+
+        public async Task AddErroredScrapeResult(ScrapeResult scrapeResult)
+        {
+            var collection = _database.GetCollection<BsonDocument>("erroredScrapeResult");
+            await collection.InsertOneAsync(GetScrapeResultDoc(scrapeResult));
+        }
+
+        private BsonDocument GetScrapeResultDoc(ScrapeResult scrapeResult)
+        {
+            return new BsonDocument
             {
-                { "name", scrapeResult.ProductName },
+                { "name", scrapeResult.ProductName ?? "" },
                 { "url", scrapeResult.AbsolutePath },
-                { "rating", scrapeResult.Rating },
+                { "rating", scrapeResult.Rating ?? "" },
                 { "website", scrapeResult.WebsiteSource.Value }
             };
-
-            var collection = _database.GetCollection<BsonDocument>("scrapeResult");
-            await collection.InsertOneAsync(document);
         }
 
         public async Task ProcessScrapeResults()
@@ -61,14 +70,14 @@ namespace Reviews.Crawler
                             if (specificScrapeResult != null)
                             {
                                 specificScrapeResult["url"] = document["url"].AsString;
-                                specificScrapeResult["rating"] = document["rating"].AsString;
+                                specificScrapeResult["rating"] = document["rating"].AsDouble;
                             }
                             else
                             {
                                 scrapeResults.Add(new BsonDocument
                                 {
                                     { "url", document["url"].AsString },
-                                    { "rating", document["rating"].AsString },
+                                    { "rating", document["rating"].AsDouble },
                                     { "website", document["website"].AsInt32 }
                                 });
                             }
@@ -86,7 +95,7 @@ namespace Reviews.Crawler
                                     new BsonDocument
                                     {
                                         { "url", document["url"].AsString },
-                                        { "rating", document["rating"].AsString },
+                                        { "rating", document["rating"].AsDouble },
                                         { "website", document["website"].AsInt32 }
                                     }}
                                 }
